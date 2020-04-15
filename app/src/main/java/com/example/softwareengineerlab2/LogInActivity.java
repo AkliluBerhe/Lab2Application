@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +30,7 @@ public class LogInActivity extends AppCompatActivity {
         loginname = (EditText) findViewById(R.id.login_name);
         loginPass = (EditText) findViewById(R.id.login_password);
         loginButton = (Button) findViewById(R.id.loginButton);
+
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +60,7 @@ public class LogInActivity extends AppCompatActivity {
                 SQLiteDBHelper sqLiteDBHelper = new SQLiteDBHelper(getApplicationContext());
                 SQLiteDatabase sqLiteDatabase = sqLiteDBHelper.getWritableDatabase();
                 sqLiteDBHelper.addAccount( userPass, userName, Address, sqLiteDatabase);
-                new userInfo(userPass, userName, Address);
+                new UserInfo(userPass, userName, Address);
                 sqLiteDBHelper.close();
 
 
@@ -75,6 +75,7 @@ public class LogInActivity extends AppCompatActivity {
             Connection con = DBConnect.getConnection();
             if (con == null) {
                 retMessage = "Unable To Connect To The Server 1";
+
             } else {
                 String loginQuery = "SELECT * FROM bank.customer WHERE Id='" + userPass + "' and name ='" + userName + "'";
                 try {

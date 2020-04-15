@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Software engineer lab 2</string>
+    <string name="toast_error" />
+    <string name="username_empty" />
 </resources>
